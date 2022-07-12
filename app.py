@@ -2,6 +2,10 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import html, dcc, Input, Output
 
+from util.helpers import get_all_players
+
+all_players = get_all_players()
+
 # the actual app starts here
 app = dash.Dash(
     __name__,
@@ -15,7 +19,7 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             html.Div([
-                dcc.Dropdown(['Papa Bü', 'Schluki', 'Berlibär', 'Schöller 2000', 'Hönzdogg'], 'Papa Bü', id='player-dropdown')
+                dcc.Dropdown(all_players, all_players[0], id='player-dropdown')
             ])
         ])
     ]),
